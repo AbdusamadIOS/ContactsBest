@@ -21,6 +21,7 @@ extension Person {
     @NSManaged public var phoneNumbers: NSObject?
     @NSManaged public var emails: NSObject?
     @NSManaged public var addresses: NSObject?
+    @NSManaged public var others: NSObject?
     
   
 

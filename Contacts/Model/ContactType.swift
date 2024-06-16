@@ -10,12 +10,14 @@ enum ContactInfoType {
     case address
     case qarzdorligi
     case haqdorligi
+    case other
     
     var title: String {
         switch self {
         case .address: return "Address"
         case .qarzdorligi: return "Qarzdorligi"
         case .haqdorligi: return "Haqdorligi"
+        case .other: return "Other"
         }
     }
     
@@ -25,6 +27,7 @@ enum ContactInfoType {
         case .address: return .default
         case .qarzdorligi: return .default
         case .haqdorligi: return .default
+        case .other: return .default
         }
     }
     
@@ -38,8 +41,10 @@ enum ContactInfoType {
             return .qarzdorligi
         } else if numberSection == 3 {
             return .haqdorligi
-        }else {
+        } else if numberSection == 4 {
             return .address
+        } else {
+            return .other
         }
     }
     
@@ -52,6 +57,8 @@ enum ContactInfoType {
             return 2
         case .haqdorligi:
             return 3
+        case .other:
+            return 4
         }
     }
     

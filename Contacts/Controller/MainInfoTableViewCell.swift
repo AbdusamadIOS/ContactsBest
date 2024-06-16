@@ -12,7 +12,7 @@ class MainInfoTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var photoOutlet: UIImageView!
     @IBOutlet weak var firstNameOutlet: UITextField!
-    @IBOutlet weak var lastNameOutlet: UITextField!
+    @IBOutlet weak var phoneNumberOutlet: UITextField!
     
     var initType: InitType? {
         didSet {
@@ -47,12 +47,12 @@ class MainInfoTableViewCell: UITableViewCell, UITextFieldDelegate {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(editeUserPhoto))
         self.photoOutlet.addGestureRecognizer(tapGestureRecognizer)
         firstNameOutlet.isEnabled = true
-        lastNameOutlet.isEnabled = true
+        phoneNumberOutlet.isEnabled = true
     }
     
     func showStyleSetup (){
         firstNameOutlet.isEnabled = false
-        lastNameOutlet.isEnabled = false
+        phoneNumberOutlet.isEnabled = false
 
     }
     

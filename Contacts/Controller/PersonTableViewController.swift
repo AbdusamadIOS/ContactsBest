@@ -22,8 +22,9 @@ class PersonTableViewController: UITableViewController, UITextFieldDelegate {
     private var phoneNumberArray = [String]()
     private var emailArray = [String]()
     private var addressArray = [String]()
+    private var otherArray = [String]()
     
-    private var userDataArray: [Int : [String]] = [0: [],1: [],2: [], 3: []]//to store user data -> 0: main 1: phone, 2: email, 3: address
+    private var userDataArray: [Int : [String]] = [0: [], 1: [], 2: [], 3: [], 4: []]//to store user data -> 0: main 1: phone, 2: email, 3: address
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,7 @@ class PersonTableViewController: UITableViewController, UITextFieldDelegate {
         let phoneNumbers = ["#@#add#@#"]
         let emails = ["#@#add#@#"]
         let addresses = ["#@#add#@#"]
+        let others = ["#@#add#@#"]
         profileImage = UIImage(named: "user")!
         phoneNumberArray = []
         emailArray = []
@@ -54,6 +56,7 @@ class PersonTableViewController: UITableViewController, UITextFieldDelegate {
         userDataArray[1] = phoneNumbers
         userDataArray[2] = emails
         userDataArray[3] = addresses
+        userDataArray[4] = others
     }
     
     func editePerson () {
@@ -73,11 +76,16 @@ class PersonTableViewController: UITableViewController, UITextFieldDelegate {
             addressArray = addresses
             addresses.append("#@#add#@#")
             
+            var others = person.others as! [String]
+            addressArray = others
+            others.append("#@#add#@#")
+            
             
             
             userDataArray[1] = phoneNumbers
             userDataArray[2] = emails
             userDataArray[3] = addresses
+            userDataArray[4] = others
         }
     }
     
@@ -95,6 +103,9 @@ class PersonTableViewController: UITableViewController, UITextFieldDelegate {
             let addresses = person.addresses as! [String]
             addressArray = addresses
             
+            let others = person.others as! [String]
+            otherArray = others
+            
             
             //            if phoneNumbers.count > 0 {
             userDataArray[1] = phoneNumbers
@@ -104,6 +115,7 @@ class PersonTableViewController: UITableViewController, UITextFieldDelegate {
             
             userDataArray[2] = emails
             userDataArray[3] = addresses
+            userDataArray[4] = others
         }
     }
     
@@ -145,7 +157,7 @@ class PersonTableViewController: UITableViewController, UITextFieldDelegate {
         
         saveUserInfo(firstName: firstNameString, lastName: lastNameString,
                      phoneNumbers: phoneNumberArray, emails: emailArray,
-                     addresses: addressArray, profileImage: profileImage) { (result) in
+                     addresses: addressArray, others: otherArray, profileImage: profileImage) { (result) in
                         if result {
                             switch initType{
                             case .create:
@@ -163,7 +175,7 @@ class PersonTableViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
-    func saveUserInfo (firstName: String, lastName: String, phoneNumbers: [String], emails: [String], addresses: [String], profileImage: UIImage, completion: (_ complete: Bool) -> ()) {
+    func saveUserInfo (firstName: String, lastName: String, phoneNumbers: [String], emails: [String], addresses: [String], others: [String], profileImage: UIImage, completion: (_ complete: Bool) -> ()) {
         if let context = self.fetchedResultsController?.managedObjectContext {
             // Creating object
             if person == nil {
@@ -179,6 +191,7 @@ class PersonTableViewController: UITableViewController, UITextFieldDelegate {
                 person.phoneNumbers = phoneNumbers as NSObject
                 person.emails = emails as NSObject
                 person.addresses = addresses as NSObject
+                person.others = others as NSObject
                 
                 do {
                     CoreDataManager.sharedInstance.saveContext()
@@ -210,9 +223,9 @@ class PersonTableViewController: UITableViewController, UITextFieldDelegate {
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "mainInfoCell", for: indexPath) as? MainInfoTableViewCell else {return UITableViewCell()}
             cell.firstNameOutlet.text = firstNameString
-            cell.lastNameOutlet.text = lastNameString
+            cell.phoneNumberOutlet.text = lastNameString
             cell.firstNameOutlet.delegate = self
-            cell.lastNameOutlet.delegate = self
+            cell.phoneNumberOutlet.delegate = self
             cell.photoOutlet.image = profileImage
             cell.initType = initType
             cell.vc = self
@@ -296,6 +309,8 @@ class PersonTableViewController: UITableViewController, UITextFieldDelegate {
                     self.emailArray = valueArray
                 case .haqdorligi:
                     self.addressArray = valueArray
+                case .other:
+                    self.otherArray = valueArray
                 }
                 valueArray.append("#@#add#@#")
                 self.userDataArray[section] = valueArray
@@ -329,6 +344,8 @@ class PersonTableViewController: UITableViewController, UITextFieldDelegate {
                             self.emailArray = valueArray
                         case .haqdorligi:
                             self.addressArray = valueArray
+                        case .other:
+                            self.otherArray = valueArray
                         }
                         valueArray.append("#@#add#@#")
                         self.userDataArray[section] = valueArray

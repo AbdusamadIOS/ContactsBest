@@ -6,6 +6,8 @@
         <attribute name="firstName" optional="YES" attributeType="String"/>
         <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String"/>
+        <attribute name="lists" optional="YES" attributeType="Binary"/>
+        <attribute name="others" optional="YES" attributeType="Transformable"/>
         <attribute name="phoneNumbers" optional="YES" attributeType="Transformable"/>
         <attribute name="profileImage" optional="YES" attributeType="Binary"/>
     </entity>

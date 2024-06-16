@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xth-Ub-S9R">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -168,15 +167,15 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="firstNameOutlet" destination="XGH-Ff-XT5" id="Mka-Au-6s8"/>
-                                    <outlet property="lastNameOutlet" destination="UGr-Vh-Ikw" id="X49-TZ-1x8"/>
+                                    <outlet property="phoneNumberOutlet" destination="UGr-Vh-Ikw" id="X49-TZ-1x8"/>
                                     <outlet property="photoOutlet" destination="H66-6N-krC" id="1F9-bZ-u2W"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="secondInfoCell" rowHeight="90" id="HQ8-X0-00P" customClass="SecondInfoTableViewCell" customModule="Contacts" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="200" width="414" height="90"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="secondInfoCell" rowHeight="63" id="HQ8-X0-00P" customClass="SecondInfoTableViewCell" customModule="Contacts" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="200" width="414" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HQ8-X0-00P" id="AlW-qy-zOF">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="63"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="+380671232323 380671232323 380671232323 380671232323" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ury-BK-eqA" userLabel="infoLable">
@@ -196,7 +195,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="addInfoCell" editingAccessoryType="checkmark" id="41Y-32-vjK" customClass="AddInfoPersonTableViewCell" customModule="Contacts" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="290" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="263" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="41Y-32-vjK" id="wXI-vF-jS0">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
