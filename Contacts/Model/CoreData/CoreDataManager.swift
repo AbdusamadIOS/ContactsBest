@@ -2,9 +2,7 @@
 //  CoreDataManager.swift
 //  Contacts
 //
-//  Created by Ruslan Kasian on 8/11/19.
-//  Copyright © 2019 Ruslan Kasian. All rights reserved.
-//
+
 
 import Foundation
 import CoreData

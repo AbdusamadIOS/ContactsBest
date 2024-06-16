@@ -10,10 +10,9 @@ import UIKit
 
 class ContactTableViewCell: UITableViewCell {
     
-    
     @IBOutlet weak var contactPhotoOutlet: UIImageView!
-    
     @IBOutlet weak var fullNameOutlet: UILabel!
+    @IBOutlet weak var phoneNumber: UILabel!
     
     var personInfo: Person? {
         didSet {
@@ -28,10 +27,12 @@ class ContactTableViewCell: UITableViewCell {
         if let detail = personInfo,
             let contactPhoto = contactPhotoOutlet,
             let fullName = fullNameOutlet,
+            let phoneNumber = phoneNumber,
             let firstName = personInfo?.firstName,
-            let lastName = personInfo?.lastName{
+            let lastName = personInfo?.lastName {
             
-            fullName.text = "\(firstName) \(lastName)"
+            fullName.text = "\(firstName)"
+            phoneNumber.text = "\(lastName)"
             if let imageData = detail.profileImage {
                 contactPhoto.image = UIImage(data: imageData as Data)
             }else {
@@ -50,7 +51,7 @@ class ContactTableViewCell: UITableViewCell {
     func setupPhoto () {
 
         contactPhotoOutlet.clipsToBounds = true
-        contactPhotoOutlet.layer.cornerRadius  = contactPhotoOutlet.frame.width/2
+        contactPhotoOutlet.layer.cornerRadius  = 10
         contactPhotoOutlet.layer.borderColor = UIColor.lightGray.cgColor
         contactPhotoOutlet.layer.borderWidth = 0.5
     }

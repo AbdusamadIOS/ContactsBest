@@ -13,7 +13,7 @@ class ContactsTableViewController: UITableViewController, NSFetchedResultsContro
     
     var fetchedResultsController = CoreDataManager.sharedInstance.fetchedResultsController("Person", keyForSort: "firstName")
         
-    private var navigationBarTitle: String = "Contacts"
+    private var navigationBarTitle: String = "Best Smart Shop"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +37,9 @@ class ContactsTableViewController: UITableViewController, NSFetchedResultsContro
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
         
-        if #available(iOS 10.0, *) {
+        if #available(iOS 15.0, *) {
             tableView.refreshControl = refreshControl
-            tableView.refreshControl?.attributedTitle = NSAttributedString (string: "fetch data ...")
+            tableView.refreshControl?.attributedTitle = NSAttributedString (string: "Best Smart Shop")
             self.navigationController?.navigationBar.prefersLargeTitles = true
         } else {
              self.navigationController?.navigationBar.prefersLargeTitles = false
@@ -98,7 +98,7 @@ class ContactsTableViewController: UITableViewController, NSFetchedResultsContro
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 90
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -149,6 +149,8 @@ class ContactsTableViewController: UITableViewController, NSFetchedResultsContro
             if let indexPath = indexPath {
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             }
+        @unknown default:
+            fatalError()
         }
     }
     

@@ -62,14 +62,50 @@ class MainInfoTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
 
     @objc private func editeUserPhoto () {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.allowsEditing = true
-        self.vc?.present(picker, animated: true, completion: nil)
+//        let picker = UIImagePickerController()
+//        picker.delegate = self
+//        picker.allowsEditing = true
+//        self.vc?.present(picker, animated: true, completion: nil)
+        
+        let alert = UIAlertController(title: "Note: We use Camera or Gallery data, so please allow to use Camera and Gallery", message: nil, preferredStyle: .alert)
+        
+        let camera = UIAlertAction(title: "Camera", style: .default ) { _ in
+            
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                
+                let imagePicker = UIImagePickerController()
+                imagePicker.sourceType = .camera
+                imagePicker.allowsEditing = true
+                self.vc?.present(imagePicker, animated: true)
+                
+            }else{
+                
+                let alert = UIAlertController(title: "Camera is not available on this device", message: nil, preferredStyle: .alert)
+                let ok = UIAlertAction(title: "Ok", style: .default)
+                alert.addAction(ok)
+                self.vc?.present(alert, animated: true)
+            }
+        }
+        
+        let gallery = UIAlertAction(title: "Gallery", style: .default) { _ in
+            let imagePicker = UIImagePickerController()
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = true
+            imagePicker.delegate = self
+            
+            self.vc?.present(imagePicker, animated: true)
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alert.addAction(camera)
+        alert.addAction(gallery)
+        alert.addAction(cancel)
+        self.vc?.present( alert, animated: true)
     }
 }
 
-//MARK: Image Picker -----------------------------------------------------------------
+//MARK: Image Picker
 
 extension MainInfoTableViewCell: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

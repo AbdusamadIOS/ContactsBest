@@ -109,7 +109,7 @@ class PersonTableViewController: UITableViewController, UITextFieldDelegate {
     
     // MARK: - View setup
     private func setupNavigationBar() {
-        if #available(iOS 10.0, *) {
+        if #available(iOS 15.0, *) {
         self.navigationController?.navigationBar.prefersLargeTitles =  true
         }
         switch initType{
@@ -290,11 +290,11 @@ class PersonTableViewController: UITableViewController, UITextFieldDelegate {
                 valueArray.remove(at: indexPath.row)
                 valueArray.removeLast()
                 switch dataType {
-                case .phone:
-                    self.phoneNumberArray = valueArray
-                case .email:
-                    self.emailArray = valueArray
                 case .address:
+                    self.phoneNumberArray = valueArray
+                case .qarzdorligi:
+                    self.emailArray = valueArray
+                case .haqdorligi:
                     self.addressArray = valueArray
                 }
                 valueArray.append("#@#add#@#")
@@ -323,11 +323,11 @@ class PersonTableViewController: UITableViewController, UITextFieldDelegate {
                         valueArray.remove(at: indexPath.row)
                         valueArray.append(info)
                         switch dataType {
-                        case .phone:
-                            self.phoneNumberArray = valueArray
-                        case .email:
-                            self.emailArray = valueArray
                         case .address:
+                            self.phoneNumberArray = valueArray
+                        case .qarzdorligi:
+                            self.emailArray = valueArray
+                        case .haqdorligi:
                             self.addressArray = valueArray
                         }
                         valueArray.append("#@#add#@#")
